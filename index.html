@@ -10,7 +10,8 @@
     <link rel="canonical" href="https://www.jaweerengineering.com/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Updated with Plus Jakarta Sans for an ultra-clean, modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <script type="application/ld+json">
     {
@@ -66,7 +67,7 @@
             --text-secondary: #4a4a4a;
             --text-light: #8a8a8a;
             --font-display: 'Playfair Display', Georgia, serif;
-            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
             --shadow-md: 0 4px 20px rgba(0,0,0,0.12);
             --shadow-lg: 0 8px 40px rgba(0,0,0,0.16);
@@ -296,9 +297,22 @@
         .logo-text { display: flex; flex-direction: column; }
         .logo-name { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--white); line-height: 1.1; letter-spacing: -0.3px; }
         .logo-tagline { font-size: 9px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); }
+        
+        /* Clean, modern Navbar styling */
         .nav { display: flex; align-items: center; gap: 2px; }
         .nav-item { position: relative; }
-        .nav-link { display: flex; align-items: center; gap: 4px; padding: 8px 14px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.8); border-radius: var(--radius-sm); transition: var(--transition-fast); }
+        .nav-link { 
+            display: flex; 
+            align-items: center; 
+            gap: 4px; 
+            padding: 8px 16px; 
+            font-size: 14px; 
+            font-weight: 500; 
+            letter-spacing: 0.3px;
+            color: rgba(255,255,255,0.85); 
+            border-radius: var(--radius-sm); 
+            transition: var(--transition-fast); 
+        }
         .nav-link:hover { color: var(--white); background: rgba(255,255,255,0.08); }
         .nav-link svg { width: 11px; height: 11px; fill: currentColor; transition: var(--transition-fast); }
         .nav-item:hover .nav-link svg { transform: rotate(180deg); }
@@ -313,17 +327,55 @@
         .header-phone svg { width: 16px; height: 16px; fill: var(--gold); animation: pulse 2s infinite; }
         .header-cta-btn { padding: 10px 22px; background: var(--gold); color: var(--navy); font-size: 12px; font-weight: 700; letter-spacing: 0.5px; border-radius: var(--radius-sm); transition: var(--transition-base); white-space: nowrap; }
         .header-cta-btn:hover { background: var(--gold-light); transform: translateY(-1px); box-shadow: var(--shadow-gold); }
-        .menu-toggle { display: none; flex-direction: column; gap: 5px; width: 26px; height: 20px; justify-content: center; z-index: 1001; cursor: pointer; }
-        .menu-toggle span { display: block; width: 100%; height: 2px; background: var(--white); border-radius: 2px; transition: var(--transition-base); transform-origin: center; }
-        .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        
+        /* Perfectly centered Mobile Toggle */
+        .menu-toggle { 
+            display: none; 
+            flex-direction: column; 
+            gap: 6px; 
+            width: 28px; 
+            height: 24px; 
+            justify-content: center; 
+            z-index: 10001; 
+            cursor: pointer; 
+            position: relative;
+        }
+        .menu-toggle span { 
+            display: block; 
+            width: 100%; 
+            height: 2.5px; 
+            background: var(--white); 
+            border-radius: 2px; 
+            transition: var(--transition-base); 
+            transform-origin: center; 
+        }
+        .menu-toggle.active span:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
         .menu-toggle.active span:nth-child(2) { opacity: 0; }
-        .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .menu-toggle.active span:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
 
         /* ===== HERO ===== */
         .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; background: var(--navy); }
-        .hero-bg { position: absolute; inset: 0; z-index: 1; }
-        .hero-bg img { width: 100%; height: 100%; object-fit: cover; animation: heroZoom 14s ease-out forwards; }
-        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,22,40,0.90) 0%, rgba(10,22,40,0.68) 50%, rgba(10,22,40,0.85) 100%); z-index: 2; }
+        .hero-bg { 
+            position: absolute; 
+            inset: 0; 
+            z-index: 1; 
+            background: var(--navy); /* Fallback color so it never looks broken */
+        }
+        .hero-bg img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            object-position: center center; /* Ensures image is perfectly centered */
+            animation: heroZoom 14s ease-out forwards; 
+            display: block; 
+        }
+        /* Lighter overlay so the hero image shows very clearly */
+        .hero-overlay { 
+            position: absolute; 
+            inset: 0; 
+            background: linear-gradient(135deg, rgba(10,22,40,0.85) 0%, rgba(10,22,40,0.55) 50%, rgba(10,22,40,0.80) 100%); 
+            z-index: 2; 
+        }
         .hero-content { position: relative; z-index: 3; width: 100%; padding-top: 130px; padding-bottom: 60px; }
         .hero-grid { display: grid; grid-template-columns: 1fr 400px; gap: 50px; align-items: center; }
         .hero-left { animation: fadeInLeft 1s ease-out 0.3s both; }
@@ -582,15 +634,82 @@
 
         @media (max-width: 768px) {
             .header-top { display: none; }
-            .nav { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--navy); flex-direction: column; justify-content: center; align-items: center; gap: 6px; z-index: 1000; padding: 24px; overflow-y: auto; }
-            .nav.active { display: flex; }
-            .nav-link { font-size: 17px; padding: 12px 24px; color: var(--white); }
-            .dropdown { position: static; transform: none; background: rgba(255,255,255,0.05); box-shadow: none; opacity: 1; visibility: visible; display: none; min-width: auto; border-radius: var(--radius-sm); margin-top: 4px; }
+            
+            /* FIXED: Fullscreen, perfectly centered mobile menu */
+            .nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                height: 100dvh; /* Handles mobile browser UI bars */
+                background: var(--navy);
+                flex-direction: column;
+                justify-content: center; /* Perfectly centers items vertically */
+                align-items: center; /* Perfectly centers items horizontally */
+                gap: 12px;
+                z-index: 9998;
+                padding: 100px 24px 40px;
+                overflow-y: auto;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-30px);
+                transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .nav.active {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+            .nav-link { 
+                font-size: 18px; 
+                padding: 14px 24px; 
+                color: var(--white); 
+                width: 100%;
+                max-width: 320px;
+                text-align: center;
+                justify-content: center;
+                font-weight: 500;
+                letter-spacing: 0.5px;
+            }
+            .nav-link:hover {
+                color: var(--gold);
+                background: rgba(255,255,255,0.05);
+            }
+            .dropdown { 
+                position: static; 
+                transform: none; 
+                background: rgba(255,255,255,0.05); 
+                box-shadow: none; 
+                opacity: 1; 
+                visibility: visible; 
+                display: none; 
+                min-width: auto; 
+                border-radius: var(--radius-md); 
+                margin-top: 8px; 
+                width: 100%;
+                max-width: 320px;
+                padding: 8px;
+            }
             .dropdown.active { display: block; }
-            .dropdown-link { color: rgba(255,255,255,0.6); padding: 10px 20px; }
-            .dropdown-link:hover { background: rgba(255,255,255,0.08); color: var(--white); }
+            .dropdown-link { 
+                color: rgba(255,255,255,0.7); 
+                padding: 12px 20px; 
+                font-size: 15px;
+                justify-content: center;
+                text-align: center;
+            }
+            .dropdown-link:hover { 
+                background: rgba(255,255,255,0.08); 
+                color: var(--gold); 
+            }
             .dropdown-link svg { fill: var(--gold); }
-            .menu-toggle { display: flex; }
+            
+            .menu-toggle { 
+                display: flex; 
+                z-index: 9999; /* Keeps toggle above the menu */
+            }
+            
             .header-phone { display: none; }
             .header-cta-btn { display: none; }
             .hero { min-height: auto; padding: 110px 0 50px; }
@@ -1291,7 +1410,7 @@
                         </div>
                         <div class="footer-contact-item">
                             <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                            <span><a href="mailto:jaweerltd@gmail.com">jaweerltd@gmail.com</a></span>
+                            <span><a href="mailto:info@jaweerengineering.com">info@jaweerengineering.com</a></span>
                         </div>
                         <div class="footer-contact-item">
                             <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
@@ -1513,3 +1632,7 @@
     </script>
 </body>
 </html>
+
+
+
+
